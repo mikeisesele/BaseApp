@@ -11,6 +11,7 @@ plugins {
 
 dependencies {
 
+    implementation(project(":core:ui"))
     implementation(project(":core:securestore"))
     testImplementation(project(":core:testing"))
 
