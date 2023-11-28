@@ -1,4 +1,4 @@
-package com.michael.base.util
+package com.michael.common
 
 class LruCache<E>(private val maxSize: Int) {
     private val items = linkedSetOf<E>()

@@ -14,23 +14,16 @@ plugins {
 dependencies {
 
     implementation(project(":core:ui"))
+    implementation(project(":core:common"))
+    api(project(":core:base"))
     implementation(project(":core:securestore"))
     testImplementation(project(":core:testing"))
+    implementation(project(":feature:home"))
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.compose.activity)
     implementation(platform(libs.compose.bom))
-    implementation(libs.compose.ui)
-    implementation(libs.compose.ui.graphics)
-    implementation(libs.compose.ui.tooling.preview)
-    implementation(libs.compose.material3)
-    implementation(libs.core.splashscreen)
-    implementation(libs.google.material)
     implementation(libs.compose.navigation)
-
-    debugImplementation(libs.compose.ui.tooling)
-    debugImplementation(libs.compose.ui.test.manifest)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

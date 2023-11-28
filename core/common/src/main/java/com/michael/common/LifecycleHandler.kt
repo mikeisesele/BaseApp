@@ -1,4 +1,4 @@
-package com.michael.base.util
+package com.michael.common
 
 import java.util.concurrent.ConcurrentHashMap
 
