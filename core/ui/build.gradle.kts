@@ -1,5 +1,4 @@
 import utils.composeConfiguration
-import utils.providetestDependencies
 
 plugins {
     `core-module-config`
@@ -19,23 +18,24 @@ dependencies {
     implementation(project(":core:base"))
     implementation(project(":core:testing"))
     implementation(libs.hilt.android)
-    implementation(libs.compose.material3)
-    implementation(libs.google.material)
+    api(libs.compose.material3)
+    api(libs.google.material)
 
     api(libs.hilt.navigation.compose)
     kapt(libs.hilt.android.compiler)
+    api(libs.core.splashscreen)
 
     api(libs.compose.activity)
     api(libs.compose.material)
     api(libs.compose.ui)
     api(libs.compose.foundation.layout)
     api(libs.compose.foundation)
+    api(libs.compose.ui.graphics)
 
     api(libs.compose.ui.tooling.preview)
     debugApi(libs.compose.ui.tooling)
+    debugApi(libs.compose.ui.test.manifest)
 
     api(libs.coil.compose)
     api(libs.coil.svg)
-
-    providetestDependencies(libs)
 }

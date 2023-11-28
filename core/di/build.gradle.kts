@@ -1,5 +1,3 @@
-import utils.providetestDependencies
-
 plugins {
     `core-module-config`
     alias(libs.plugins.hilt.plugin)
@@ -23,6 +21,4 @@ dependencies {
     api(libs.retrofit.moshi)
     api(libs.logging.interceptor)
     api(libs.moshi)
-
-    providetestDependencies(libs)
 }

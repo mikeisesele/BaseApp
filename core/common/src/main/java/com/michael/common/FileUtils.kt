@@ -1,4 +1,4 @@
-package com.michael.base.util
+package com.michael.common
 
 import android.app.DownloadManager
 import android.content.Context

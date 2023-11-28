@@ -3,44 +3,64 @@ package com.michael.baseapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.getValue
+import androidx.navigation.compose.rememberNavController
+import com.michael.base.contract.ViewEvent
+import com.michael.base.model.Ignored
+import com.michael.baseapp.mainscreen.contract.MainSideEffect
+import com.michael.baseapp.mainscreen.presentation.MainScreen
+import com.michael.baseapp.navigation.Destination
+import com.michael.baseapp.navigation.NavigationGraph
+import com.michael.baseapp.navigation.processNavigation
+import com.michael.ui.extensions.collectAsEffect
+import com.michael.ui.extensions.rememberStateWithLifecycle
 import com.michael.ui.theme.BaseAppTheme
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.Flow
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val mainScreenViewModel: MainScreenViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val navController = rememberNavController()
+            val state by rememberStateWithLifecycle(mainScreenViewModel.state)
+
+            subscribeToSideEffects(
+                events = mainScreenViewModel::events,
+                navigateToDestinations = {
+                    navController.processNavigation(it)
+                },
+            )
+
             BaseAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background,
-                ) {
-                    Greeting("Android")
+                MainScreen(state) {
+                    NavigationGraph(navController)
                 }
             }
         }
     }
 }
 
+@Suppress("composableNaming")
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier,
-    )
-}
+private fun subscribeToSideEffects(
+    events: () -> Flow<ViewEvent>,
+    navigateToDestinations: (Destination) -> Unit,
+) {
+    events().collectAsEffect { viewEvent ->
+        when (viewEvent) {
+            is ViewEvent.Effect -> when (val target = viewEvent.effect) {
+                is MainSideEffect.NavigateToDestination -> {
+                    navigateToDestinations(target.destination)
+                }
+            }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    BaseAppTheme {
-        Greeting("Android")
+            else -> Ignored
+        }
     }
 }

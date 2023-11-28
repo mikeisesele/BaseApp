@@ -53,6 +53,7 @@ crashlytics = "18.3.7"
 ksp = "1.9.10-1.0.13"
 security-crypto = "1.0.0"
 appcompat = "1.6.1"
+org-jetbrains-kotlin-android190 = "1.9.0"
 
 [libraries]
 
@@ -146,9 +147,11 @@ coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 coil-svg = { module = "io.coil-kt:coil-svg", version.ref = "coil" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version = "1.1.5" }
+androidx-ui-android = { group = "androidx.compose.ui", name = "ui-android", version = "1.5.4" }
 
 [plugins]
 hilt-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp-plugin = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 com-android-library = { id = "com.android.library", version.ref = "agp" }
+org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android190" }
 

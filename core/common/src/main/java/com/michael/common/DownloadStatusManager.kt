@@ -1,4 +1,4 @@
-package com.michael.base.util
+package com.michael.common
 
 import com.michael.base.model.DownloadStatus
 import kotlinx.coroutines.flow.Flow

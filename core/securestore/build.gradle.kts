@@ -1,5 +1,3 @@
-import utils.providetestDependencies
-
 plugins {
     `core-module-config`
     alias(libs.plugins.hilt.plugin)
@@ -18,6 +16,4 @@ dependencies {
     implementation(libs.firebase.crashlytics)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
-
-    providetestDependencies(libs)
 }
