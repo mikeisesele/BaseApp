@@ -1,5 +1,4 @@
 import utils.composeConfiguration
-import utils.providetestDependencies
 
 plugins {
     `core-module-config`
@@ -21,5 +20,4 @@ dependencies {
     kapt(libs.hilt.android.compiler)
 
     implementation(libs.compose.runtime)
-    providetestDependencies(libs)
 }

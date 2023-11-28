@@ -24,6 +24,6 @@ dependencies {
 
     implementation(libs.compose.runtime)
 
-    providetestDependencies(libs)
     detektPlugins(libs.detekt.formatter)
+    providetestDependencies(libs)
 }

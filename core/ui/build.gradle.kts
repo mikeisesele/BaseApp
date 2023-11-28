@@ -1,5 +1,4 @@
 import utils.composeConfiguration
-import utils.providetestDependencies
 
 plugins {
     `core-module-config`
@@ -36,6 +35,4 @@ dependencies {
 
     api(libs.coil.compose)
     api(libs.coil.svg)
-
-    providetestDependencies(libs)
 }

@@ -1,3 +1,5 @@
+import utils.providetestDependencies
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     `app-module-config`
@@ -38,13 +40,6 @@ dependencies {
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.ui.test.junit4)
 
-    testImplementation(libs.junit)
-    testImplementation(libs.turbine)
-    testImplementation(libs.mockk)
-    testImplementation(libs.androidx.core.testing)
-    testImplementation(libs.coroutines.test)
-    testImplementation(libs.kotest.assertions)
-
-    testRuntimeOnly(libs.junit.engine)
+    providetestDependencies(libs)
     detektPlugins(libs.detekt.formatter)
 }
