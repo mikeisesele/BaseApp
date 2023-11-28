@@ -3,8 +3,8 @@ package com.michael.di
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
-import com.michael.sharedPreference.SharedPref
 import com.michael.localdata.AppDatabase
+import com.michael.sharedPreference.SharedPref
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
