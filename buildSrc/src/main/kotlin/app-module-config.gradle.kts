@@ -31,37 +31,14 @@ android {
             useSupportLibrary = true
         }
     }
-    signingConfigs {
-        create("release") {
-            storeFile = file("../extra/release.keystore")
-            keyPassword = System.getenv("KEYPASS")
-            storePassword = System.getenv("STOREPASS")
-            keyAlias = System.getenv("KEYALIAS")
-        }
-        maybeCreate("snapshot")
-        getByName("snapshot").apply {
-            initWith(getByName("release"))
-        }
-    }
 
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("release")
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
-        }
-        maybeCreate("snapshot").apply {
-            initWith(getByName("debug"))
-            signingConfig = signingConfigs.getByName("snapshot")
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-            matchingFallbacks += listOf("debug")
         }
     }
     packaging {

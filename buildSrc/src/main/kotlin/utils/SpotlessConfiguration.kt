@@ -7,8 +7,8 @@ import org.gradle.kotlin.dsl.configure
 
 fun Project.spotlessConfig(ktLintVersion: Provider<String>) {
     configure<SpotlessExtension> {
-        // Allow spotless to run on git diff instead of entire project
-        ratchetFrom("origin/${BuildConstants.baseBranch}")
+//        // Allow spotless to run on git diff instead of entire project
+//        ratchetFrom("origin/${BuildConstants.baseBranch}")
         kotlin {
             ktlint(ktLintVersion.get())
                 .editorConfigOverride(
