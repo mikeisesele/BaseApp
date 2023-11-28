@@ -20,15 +20,6 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Set up Android environment
-      - uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 32
-          target: google_apis_playstore
-          arch: x86
-          profile: Nexus 5
-          emulator-options: -no-snapshot
-
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Check Code Formatting with Spotless
