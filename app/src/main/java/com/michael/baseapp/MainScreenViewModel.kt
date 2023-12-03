@@ -6,7 +6,7 @@ import com.michael.base.providers.DispatcherProvider
 import com.michael.baseapp.mainscreen.contract.MainSideEffect
 import com.michael.baseapp.mainscreen.contract.MainState
 import com.michael.baseapp.mainscreen.contract.MainViewAction
-import com.michael.baseapp.navigation.Destination
+import com.michael.baseapp.navigation.ScreenSpec
 import com.michael.baseapp.navigation.destinations
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -28,13 +28,13 @@ class MainScreenViewModel @Inject constructor(
     }
     override fun onViewAction(viewAction: MainViewAction) {
         when (viewAction) {
-            is MainViewAction.DestinationClicked -> navigate(viewAction.destination)
+            is MainViewAction.DestinationClicked -> navigate(viewAction.screenSpec)
         }
     }
 
-    private fun navigate(destination: Destination) {
+    private fun navigate(screenSpec: ScreenSpec) {
         dispatchViewEvent(
-            ViewEvent.Effect(MainSideEffect.NavigateToDestination(destination)),
+            ViewEvent.Effect(MainSideEffect.NavigateToDestination(screenSpec)),
         )
     }
 }

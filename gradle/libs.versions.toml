@@ -54,6 +54,7 @@ ksp = "1.9.10-1.0.13"
 security-crypto = "1.0.0"
 appcompat = "1.6.1"
 org-jetbrains-kotlin-android190 = "1.9.0"
+compose-destinations = "1.9.55"
 
 [libraries]
 
@@ -148,6 +149,9 @@ coil-svg = { module = "io.coil-kt:coil-svg", version.ref = "coil" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version = "1.1.5" }
 androidx-ui-android = { group = "androidx.compose.ui", name = "ui-android", version = "1.5.4" }
+
+compose-destinations = {module = "io.github.raamcosta.compose-destinations:core", version.ref = "compose-destinations" }
+compose-destinations-ksp = {module = "io.github.raamcosta.compose-destinations:ksp", version.ref = "compose-destinations" }
 
 [plugins]
 hilt-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

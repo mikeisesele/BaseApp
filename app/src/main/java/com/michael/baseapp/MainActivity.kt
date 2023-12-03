@@ -11,8 +11,8 @@ import com.michael.base.contract.ViewEvent
 import com.michael.base.model.Ignored
 import com.michael.baseapp.mainscreen.contract.MainSideEffect
 import com.michael.baseapp.mainscreen.presentation.MainScreen
-import com.michael.baseapp.navigation.Destination
 import com.michael.baseapp.navigation.NavigationGraph
+import com.michael.baseapp.navigation.ScreenSpec
 import com.michael.baseapp.navigation.processNavigation
 import com.michael.ui.extensions.collectAsEffect
 import com.michael.ui.extensions.rememberStateWithLifecycle
@@ -50,13 +50,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun subscribeToSideEffects(
     events: () -> Flow<ViewEvent>,
-    navigateToDestinations: (Destination) -> Unit,
+    navigateToDestinations: (ScreenSpec) -> Unit,
 ) {
     events().collectAsEffect { viewEvent ->
         when (viewEvent) {
             is ViewEvent.Effect -> when (val target = viewEvent.effect) {
                 is MainSideEffect.NavigateToDestination -> {
-                    navigateToDestinations(target.destination)
+                    navigateToDestinations(target.screenSpec)
                 }
             }
 

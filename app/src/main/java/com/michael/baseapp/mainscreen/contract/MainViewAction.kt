@@ -1,8 +1,8 @@
 package com.michael.baseapp.mainscreen.contract
 
-import com.michael.baseapp.navigation.Destination
+import com.michael.baseapp.navigation.ScreenSpec
 
 sealed interface MainViewAction {
 
-    data class DestinationClicked(val destination: Destination) : MainViewAction
+    data class DestinationClicked(val screenSpec: ScreenSpec) : MainViewAction
 }
