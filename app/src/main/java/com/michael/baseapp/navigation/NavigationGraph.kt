@@ -1,5 +1,6 @@
 package com.michael.baseapp.navigation
 
+import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -23,6 +24,7 @@ fun NavigationGraph(navController: NavHostController) {
     }
 }
 
+@SuppressLint("RestrictedApi")
 fun NavHostController.processNavigation(screen: ScreenSpec) {
     val doesStackContainDestination = currentBackStack.value.find { backStack ->
         backStack.destination.route != null && backStack.destination.route!!.contains(screen.route)
